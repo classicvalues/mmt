@@ -1,4 +1,4 @@
-describe 'Viewing Collection Draft Proposals Index Pages', js: true do
+describe 'Viewing Collection Draft Proposals Index Pages' do
   context 'when logged in as a user' do
     before do
       login
@@ -41,6 +41,12 @@ describe 'Viewing Collection Draft Proposals Index Pages', js: true do
         end
 
         it 'sorts in ascending order' do
+          puts page.find('.open-draft-proposals tbody tr:nth-child(1)').text
+          puts page.find('.open-draft-proposals tbody tr:nth-child(2)').text
+          puts page.find('.open-draft-proposals tbody tr:nth-child(3)').text
+          puts page.find('.open-draft-proposals tbody tr:nth-child(4)').text
+          puts page.find('.open-draft-proposals tbody tr:nth-child(5)').text
+          puts page.find('.open-draft-proposals tbody tr:nth-child(6)').text
           within '.open-draft-proposals tbody tr:nth-child(1)' do
             expect(page).to have_content('Second Example Title')
           end
@@ -52,6 +58,12 @@ describe 'Viewing Collection Draft Proposals Index Pages', js: true do
           end
 
           it 'sorts in descending order' do
+            puts page.find('.open-draft-proposals tbody tr:nth-child(1)').text
+            puts page.find('.open-draft-proposals tbody tr:nth-child(2)').text
+            puts page.find('.open-draft-proposals tbody tr:nth-child(3)').text
+            puts page.find('.open-draft-proposals tbody tr:nth-child(4)').text
+            puts page.find('.open-draft-proposals tbody tr:nth-child(5)').text
+            puts page.find('.open-draft-proposals tbody tr:nth-child(6)').text
             within '.open-draft-proposals tbody tr:nth-child(5)' do
               expect(page).to have_content('An Example Proposal')
             end
