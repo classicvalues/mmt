@@ -23,7 +23,7 @@ namespace :cmr do
 
     # `-DCMR_DEV_SYSTEM_REDIS_TYPE=external` was added when CMR made a change to use Redis
     # we may be able to remove it when they adjust the uberjar configuration
-    Process.spawn('cd cmr; nohup java -classpath ./cmr-dev-system-0.1.0-SNAPSHOT-standalone.jar cmr.dev_system.runner > cmr.log 2>&1 &')
+    Process.spawn('cd cmr; nohup java -classpath -DCMR_DEV_SYSTEM_REDIS_TYPE=external ./cmr-dev-system-0.1.0-SNAPSHOT-standalone.jar cmr.dev_system.runner > cmr.log 2>&1 &')
 
     # this command was necessary when there was an issue with jRuby in CMR accessing our gems
     # Process.spawn('cd cmr; unset GEM_HOME; unset GEM_PATH; echo `env`; nohup java -classpath ./cmr-dev-system-0.1.0-SNAPSHOT-standalone.jar cmr.dev_system.runner&')
