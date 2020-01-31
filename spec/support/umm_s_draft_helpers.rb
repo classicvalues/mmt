@@ -21,6 +21,7 @@ module Helpers
       ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'Helpers::UmmSDraftHelpers#add_service_contact_persons' do
         within '.multiple.contact-persons' do
           select 'SERVICE PROVIDER', from: 'Roles'
+          wait_for_jQuery
           fill_in 'First Name', with: 'First'
           fill_in 'Middle Name', with: 'Middle'
           fill_in 'Last Name', with: 'Last'
