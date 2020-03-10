@@ -28,7 +28,7 @@ Capybara.register_driver :headless_chrome do |app|
   # set timeout to 60s http://www.testrisk.com/2016/05/change-default-timeout-and-wait-time-of.html
   # need to use read_timeout and open_timeout https://github.com/SeleniumHQ/selenium/blob/master/rb/lib/selenium/webdriver/remote/http/default.rb
   client = Selenium::WebDriver::Remote::Http::Default.new
-  client.read_timeout = 60
+  client.read_timeout = 180
   client.open_timeout = 60
 
   # http://technopragmatica.blogspot.com/2017/10/switching-to-headless-chrome-for-rails_31.html
