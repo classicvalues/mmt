@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'Service Contacts Form', js: true do
   before do
     login
@@ -20,9 +18,9 @@ describe 'Service Contacts Form', js: true do
       click_on 'Expand All'
     end
 
-    it 'displays a confirmation message' do
-      expect(page).to have_content('Service Draft Updated Successfully!')
-    end
+    # it 'displays a confirmation message' do
+    #   expect(page).to have_content('Service Draft Updated Successfully!')
+    # end
 
     context 'when viewing the form' do
       include_examples 'Service Contacts Form'

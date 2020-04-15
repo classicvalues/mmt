@@ -13,7 +13,9 @@ shared_examples_for 'Service Organizations Full Form' do
 end
 
 shared_examples_for 'Service Organizations Form with Contact Information' do
-  it 'displays the form with values' do
+  it 'displays the form with values along with a confirmation message' do
+    expect(page).to have_content('Service Draft Updated Successfully!')
+    
     within '.multiple.service-organizations > .multiple-item-0' do
       expect(page).to have_select('Roles', selected: ['DEVELOPER', 'PUBLISHER'])
       expect(page).to have_field('Short Name', with: 'AARHUS-HYDRO')
@@ -26,7 +28,9 @@ shared_examples_for 'Service Organizations Form with Contact Information' do
   end
 end
 shared_examples_for 'Service Organizations Form with Contact Groups' do
-  it 'displays the form with values' do
+  it 'displays the form with values along with a confirmation message' do
+    expect(page).to have_content('Service Draft Updated Successfully!')
+
     within '.multiple.service-organizations > .multiple-item-0' do
       expect(page).to have_select('Roles', selected: ['DEVELOPER', 'PUBLISHER'])
       expect(page).to have_field('Short Name', with: 'AARHUS-HYDRO')
@@ -39,7 +43,9 @@ shared_examples_for 'Service Organizations Form with Contact Groups' do
   end
 end
 shared_examples_for 'Service Organizations Form with Contact Persons' do
-  it 'displays the form with values' do
+  it 'displays the form with values along with a confirmation message' do
+    expect(page).to have_content('Service Draft Updated Successfully!')
+
     within '.multiple.service-organizations > .multiple-item-0' do
       expect(page).to have_select('Roles', selected: ['DEVELOPER', 'PUBLISHER'])
       expect(page).to have_field('Short Name', with: 'AARHUS-HYDRO')

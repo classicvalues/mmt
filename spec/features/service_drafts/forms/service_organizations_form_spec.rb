@@ -14,9 +14,9 @@ describe 'Service Organizations Form', js: true do
       end
     end
 
-    it 'displays a confirmation message' do
-      expect(page).to have_content('Service Draft Updated Successfully!')
-    end
+    # it 'displays a confirmation message' do
+    #   expect(page).to have_content('Service Draft Updated Successfully!')
+    # end
 
     context 'when viewing the form' do
       include_examples 'Service Organizations Form with Contact Information'
@@ -32,9 +32,9 @@ describe 'Service Organizations Form', js: true do
       end
     end
 
-    it 'displays a confirmation message' do
-      expect(page).to have_content('Service Draft Updated Successfully!')
-    end
+    # it 'displays a confirmation message' do
+    #   expect(page).to have_content('Service Draft Updated Successfully!')
+    # end
 
     context 'when viewing the form' do
       include_examples 'Service Organizations Form with Contact Groups'
@@ -50,9 +50,9 @@ describe 'Service Organizations Form', js: true do
       end
     end
 
-    it 'displays a confirmation message' do
-      expect(page).to have_content('Service Draft Updated Successfully!')
-    end
+    # it 'displays a confirmation message' do
+    #   expect(page).to have_content('Service Draft Updated Successfully!')
+    # end
 
     context 'when viewing the form' do
       include_examples 'Service Organizations Form with Contact Persons'

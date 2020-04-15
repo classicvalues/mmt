@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 describe 'Service Organizations Form Navigation', js: true do
   before do
     login
@@ -157,7 +155,7 @@ describe 'Service Organizations Form Navigation', js: true do
     end
 
     context 'when viewing the form' do
-      include_examples 'Service Organizations Form'
+      include_examples 'Service Organizations Full Form'
     end
 
     context 'When clicking `Save` without making any changes' do
@@ -195,7 +193,7 @@ describe 'Service Organizations Form Navigation', js: true do
       end
 
       context 'when viewing the form' do
-        include_examples 'Service Organizations Form'
+        include_examples 'Service Organizations Full Form'
       end
     end
   end
