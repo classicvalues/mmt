@@ -23,7 +23,7 @@ describe 'Service Contacts Form', js: true do
     # end
 
     context 'when viewing the form' do
-      include_examples 'Service Contacts Form'
+      include_examples 'Service Contacts Form with confirmation'
     end
   end
 end
