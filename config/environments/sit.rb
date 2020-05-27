@@ -112,7 +112,7 @@ Rails.application.configure do
   config.subscriptions_enabled = true
 
   # Feature toggle for Content Security Policy (CSP) logging.
-  config.csplog_enabled = false
+  config.csplog_enabled = true
 
   config.cmr_env = 'sit'
   config.echo_env = 'sit'
