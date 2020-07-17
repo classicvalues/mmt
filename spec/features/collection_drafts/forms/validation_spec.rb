@@ -271,6 +271,8 @@ describe 'Data validation for a collection draft form', js: true do
       visit edit_collection_draft_path(@draft, form: 'temporal_information')
 
       open_accordions
+
+      wait_for_jQuery
     end
 
     it 'validation of oneOf does work' do

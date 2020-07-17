@@ -41,7 +41,7 @@ describe 'Data Contacts form filling in Data Center Contacts' do
 
         context 'when filling out the form' do
           before do
-            add_data_center(data_center_short_name)
+            add_data_center(data_center_short_name, true)
             select 'Investigator', from: 'Role'
             select 'Technical Contact', from: 'Role'
             add_person
@@ -172,7 +172,7 @@ describe 'Data Contacts form filling in Data Center Contacts' do
 
         context 'when filling out the form' do
           before do
-            add_data_center(data_center_short_name)
+            add_data_center(data_center_short_name, true)
             select 'Data Center Contact', from: 'Role'
             select 'User Services', from: 'Role'
             fill_in 'Group Name', with: 'DC Contact Group Name'
@@ -313,7 +313,7 @@ describe 'Data Contacts form filling in Data Center Contacts' do
 
         context 'when filling out the form' do
           before do
-            add_data_center(data_center_short_name)
+            add_data_center(data_center_short_name, true)
             select 'Investigator', from: 'Role'
             select 'Technical Contact', from: 'Role'
             add_person
@@ -440,7 +440,7 @@ describe 'Data Contacts form filling in Data Center Contacts' do
 
         context 'when filling out the form' do
           before do
-            add_data_center(data_center_short_name)
+            add_data_center(data_center_short_name, true)
             select 'Data Center Contact', from: 'Role'
             select 'User Services', from: 'Role'
             fill_in 'Group Name', with: 'DC Contact Group Name'

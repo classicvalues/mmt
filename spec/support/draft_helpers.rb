@@ -41,10 +41,15 @@ module Helpers
       false
     end
 
-    def add_data_center(value)
+    def add_data_center(value, data_contacts_page = nil)
       ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'Helpers::DraftHelpers#add_data_center' do
         find('.select2-container .select2-selection').click
-        select value, from: 'Short Name'
+        location = if data_contacts_page
+                     'Data Center Short Name'
+                   else
+                     'Short Name'
+                   end
+        select value, from: location
       end
     end
 
