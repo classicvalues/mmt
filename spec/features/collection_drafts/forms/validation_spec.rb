@@ -294,6 +294,8 @@ describe 'Data validation for a collection draft form', js: true do
         click_on 'Done'
       end
 
+      wait_for_jQuery
+
       expect(page).to have_content('Collection Draft Updated Successfully!')
     end
   end
