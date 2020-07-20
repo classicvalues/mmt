@@ -44,8 +44,11 @@ module Helpers
     def add_data_center(value)
       ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'Helpers::DraftHelpers#add_data_center' do
         find('.select2-container .select2-selection').click
-        wait_for_jQuery
-        page.save_screenshot("screen.png", full: true)
+        puts '><><><><><><><'
+        puts value
+        puts find(:xpath, '//body')
+        puts find(:xpath, '//body').find('.select2-dropdown li.select2-results__option', text: value)
+        puts '><><><><><><><'
         find(:xpath, '//body').find('.select2-dropdown li.select2-results__option', text: value).click
       end
     end
