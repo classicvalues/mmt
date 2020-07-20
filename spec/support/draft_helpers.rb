@@ -44,11 +44,11 @@ module Helpers
     def add_data_center(value)
       ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'Helpers::DraftHelpers#add_data_center' do
         find('.select2-container .select2-selection').click
-        puts '><><><><><><><'
-        puts value
-        puts find(:xpath, '//body')
-        puts find(:xpath, '//body').find('.select2-dropdown li.select2-results__option', text: value)
-        puts '><><><><><><><'
+        begin
+          find(:xpath, '//body').find('.select2-dropdown li.select2-results__option', text: value)
+        rescue Capybara::ElementNotFound
+          find('.select2-container .select2-selection').click
+        end
         find(:xpath, '//body').find('.select2-dropdown li.select2-results__option', text: value).click
       end
     end
