@@ -297,6 +297,7 @@ describe 'Data validation for a collection draft form', js: true do
             fill_in 'draft_temporal_extents_0_single_date_times_0', with: '2015-07-01T00:00:00.000Z'
           end
 
+          find('#draft_temporal_extents_0_precision_of_seconds').click
           page.save_screenshot('temporal-pre-done.png', full: true)
           within '.nav-top' do
             click_on 'Done'
