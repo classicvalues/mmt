@@ -273,30 +273,39 @@ describe 'Data validation for a collection draft form', js: true do
       open_accordions
     end
 
-    it 'validation of oneOf does work' do
-      choose 'draft_temporal_extents_0_ends_at_present_flag_true'
+    context "when the oneOf constraint is not satisfied" do
+      before do
+        choose 'draft_temporal_extents_0_ends_at_present_flag_true'
 
-      within '.nav-top' do
-        click_on 'Done'
-      end
-      # Reject
-      click_on 'No'
-
-      expect(page).to have_selector(validation_error)
-      expect(page).to have_content('TemporalExtents should have one option completed')
-      choose 'draft_temporal_extents_0_temporal_range_type_SingleDateTime'
-
-      within '.single-date-times' do
-        fill_in 'draft_temporal_extents_0_single_date_times_0', with: '2015-07-01T00:00:00Z'
+        within '.nav-top' do
+          click_on 'Done'
+        end
+        # Reject
+        click_on 'No'
       end
 
-      within '.nav-top' do
-        click_on 'Done'
+      it "displays an error" do
+        expect(page).to have_selector(validation_error)
+        expect(page).to have_content('TemporalExtents should have one option completed')
       end
 
-      wait_for_jQuery
+      context "when the constraint is then satisfied" do
+        before do
+          choose 'draft_temporal_extents_0_temporal_range_type_SingleDateTime'
 
-      expect(page).to have_content('Collection Draft Updated Successfully!')
+          within '.single-date-times' do
+            fill_in 'draft_temporal_extents_0_single_date_times_0', with: '2015-07-01T00:00:00Z'
+          end
+
+          within '.nav-top' do
+            click_on 'Done'
+          end
+        end
+
+        it "does not produce any errors or ask for confirmation when clicking done" do
+          expect(page).to have_content('Collection Draft Updated Successfully!')
+        end
+      end
     end
   end
 

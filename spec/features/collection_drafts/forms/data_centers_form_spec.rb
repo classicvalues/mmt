@@ -25,8 +25,6 @@ describe 'Data Centers form' do
         button_script = "$('.add-another-data-center').click();"
         page.execute_script(button_script)
 
-        wait_for_jQuery
-
         within '#draft_data_centers_1' do
           select 'Originator', from: 'Role'
           add_data_center('ESA/ED')
