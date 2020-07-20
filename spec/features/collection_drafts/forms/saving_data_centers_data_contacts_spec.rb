@@ -64,14 +64,10 @@ describe 'Saving Data Contacts and Data Centers', js: true do
           expect(page).to have_content('Data Centers')
           click_on 'Add another Data Center'
 
-          wait_for_jQuery
-
-          within '.multiple.data-centers > .multiple-item-1' do
+          within '#draft_data_centers_1' do
             select 'Originator', from: 'Role'
             add_data_center('ESA/ED')
           end
-
-          wait_for_jQuery
 
           within '.nav-top' do
             click_on 'Done'
