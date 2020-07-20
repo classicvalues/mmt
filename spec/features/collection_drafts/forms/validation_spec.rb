@@ -297,9 +297,12 @@ describe 'Data validation for a collection draft form', js: true do
             fill_in 'draft_temporal_extents_0_single_date_times_0', with: '2015-07-01T00:00:00.000Z'
           end
 
+          page.save_screenshot('temporal-pre-done.png', full: true)
           within '.nav-top' do
             click_on 'Done'
+            page.save_screenshot('temporal-post-done.png', full: true)
           end
+          page.save_screenshot('temporal-end.png', full: true)
         end
 
         it 'does not produce any errors or ask for confirmation when clicking done' do
