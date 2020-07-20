@@ -53,13 +53,6 @@ module Helpers
       end
     end
 
-    def add_data_center_for_contact(value)
-      ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'Helpers::DraftHelpers#add_data_center' do
-        find('.select2-container .select2-selection').click
-        find(:xpath, '//body').find('.select2-dropdown li.select2-results__option', text: value).click
-      end
-    end
-
     def add_person
       ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'Helpers::DraftHelpers#add_person' do
         fill_in 'First Name', with: 'First Name'
