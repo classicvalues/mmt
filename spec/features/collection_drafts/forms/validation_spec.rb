@@ -298,12 +298,9 @@ describe 'Data validation for a collection draft form', js: true do
           end
 
           find('#draft_temporal_extents_0_precision_of_seconds').click
-          page.save_screenshot('temporal-pre-done.png', full: true)
           within '.nav-top' do
             click_on 'Done'
-            page.save_screenshot('temporal-post-done.png', full: true)
           end
-          page.save_screenshot('temporal-end.png', full: true)
         end
 
         it 'does not produce any errors or ask for confirmation when clicking done' do
