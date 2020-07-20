@@ -28,6 +28,7 @@ describe 'Data Centers form' do
         within '#draft_data_centers_1' do
           select 'Originator', from: 'Role'
           add_data_center('ESA/ED')
+          find('#draft_data_centers_1_contact_information_service_hours').click
           add_contact_information(type: 'data_center', single: false, button_type: 'Data Center')
         end
 

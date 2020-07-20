@@ -67,6 +67,7 @@ describe 'Saving Data Contacts and Data Centers', js: true do
           within '#draft_data_centers_1' do
             select 'Originator', from: 'Role'
             add_data_center('ESA/ED')
+            find('#draft_data_centers_1_contact_information_service_hours').click
           end
 
           within '.nav-top' do
