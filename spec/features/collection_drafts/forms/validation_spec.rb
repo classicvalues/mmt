@@ -289,12 +289,12 @@ describe 'Data validation for a collection draft form', js: true do
         expect(page).to have_content('TemporalExtents should have one option completed')
       end
 
-      context "when the constraint is then satisfied" do
+      context 'when the constraint is then satisfied' do
         before do
           choose 'draft_temporal_extents_0_temporal_range_type_SingleDateTime'
 
           within '.single-date-times' do
-            fill_in 'draft_temporal_extents_0_single_date_times_0', with: '2015-07-01T00:00:00Z'
+            fill_in 'draft_temporal_extents_0_single_date_times_0', with: '2015-07-01T00:00:00.000Z'
           end
 
           within '.nav-top' do
@@ -302,7 +302,7 @@ describe 'Data validation for a collection draft form', js: true do
           end
         end
 
-        it "does not produce any errors or ask for confirmation when clicking done" do
+        it 'does not produce any errors or ask for confirmation when clicking done' do
           expect(page).to have_content('Collection Draft Updated Successfully!')
         end
       end
