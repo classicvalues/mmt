@@ -704,6 +704,7 @@ module Cmr
           req.body = '{"name": "' + provider_id + ' Admin Group", "description": "Test group for provider", "provider_id": "' + provider_id + '"}'
         end
         # get the new provider group's concept id
+        puts "Group response: #{group_resp.body}"
         group_concept_id = JSON.parse(group_resp.body)['concept_id']
         # puts "group added for recreated provider. concept: #{group_concept_id}; response: #{group_resp.body}"
 
