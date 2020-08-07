@@ -571,7 +571,7 @@ module Cmr
         req.url('http://localhost:3002/jobs/reindex-collection-permitted-groups')
         req.headers['Echo-token'] = 'mock-echo-system-token'
       end
-      # puts "Reindexing permitted groups: #{resp.inspect}"
+      puts "Reindexing permitted groups: #{resp.inspect}"
     end
 
     def wait_for_indexing
@@ -582,14 +582,14 @@ module Cmr
         req.url('http://localhost:2999/message-queue/wait-for-terminal-states')
         req.headers['Echo-token'] = 'mock-echo-system-token'
       end
-      # puts "Waiting for CMR queue to empty: #{resp.inspect}"
+      puts "Waiting for CMR queue to empty: #{resp.inspect}"
 
       # Refresh the ElasticSearch index
       resp = connection.post do |req|
         req.url('http://localhost:9210/_refresh')
         req.headers['Echo-token'] = 'mock-echo-system-token'
       end
-      # puts "Refreshing the ElasticSearch index: #{resp.inspect}"
+      puts "Refreshing the ElasticSearch index: #{resp.inspect}"
     end
 
     def insert_metadata
@@ -676,6 +676,7 @@ module Cmr
           req.headers['force-full-provider-delete'] = 'true'
           req.url("http://localhost:3002/providers/#{provider_id}")
         end
+        puts "provider delete: #{response.inspect}"
 
         sleep(0.005)
         guid = "prov-guid-#{Time.now.to_i}"
@@ -695,7 +696,7 @@ module Cmr
           req.headers['Echo-token'] = 'mock-echo-system-token'
           req.body = '[{"provider":{"id":"' + guid + '","provider_id":"' + provider_id + '"}}]'
         end
-        puts "recreate provider in mock echo: #{resp}"
+        puts "recreate provider in mock echo: #{resp.inspect}"
 
         # Create provider acl group
         group_resp = connection.post do |req|
