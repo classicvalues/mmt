@@ -738,6 +738,8 @@ module Cmr
           req.url('http://localhost:3011/acls')
           req.headers['Content-Type'] = 'application/json'
           req.headers['Echo-token'] = 'mock-echo-system-token'
+          puts "Group id: #{group_concept_id}"
+          puts "Provider id: #{provider_id}"
           req.body = '{"group_permissions": [{"group_id": "' + group_concept_id + '", "permissions": ["read", "create"]}], "provider_identity": {"target": "GROUP", "provider_id": "' + provider_id + '"}}'
         end
 
