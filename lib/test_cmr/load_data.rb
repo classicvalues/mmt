@@ -695,7 +695,7 @@ module Cmr
           req.headers['Echo-token'] = 'mock-echo-system-token'
           req.body = '[{"provider":{"id":"' + guid + '","provider_id":"' + provider_id + '"}}]'
         end
-        puts "recreate provider in mock echo: #{resp.body}"
+        puts "recreate provider in mock echo: #{resp}"
 
         # Create provider acl group
         group_resp = connection.post do |req|
