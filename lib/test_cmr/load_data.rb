@@ -672,6 +672,8 @@ module Cmr
 
     def reset_provider(provider_id)
       ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'load_data.rb reset_provider' do
+        wait_for_indexing
+        
         # Delete the given provider
         # When a provider is deleted all of the data associated with that provider is
         # also deleted. CMR then needs to re-index, which is asyncronous
