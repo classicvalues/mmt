@@ -590,6 +590,12 @@ module Cmr
         req.headers['Echo-token'] = 'mock-echo-system-token'
       end
       puts "Refreshing the ElasticSearch index: #{resp.inspect}"
+
+      resp = connection.post do |req|
+        req.url('http://localhost:2999/message-queue/wait-for-terminal-states')
+        req.headers['Echo-token'] = 'mock-echo-system-token'
+      end
+      puts "Waiting for CMR queue to empty: #{resp.inspect}"
     end
 
     def insert_metadata
