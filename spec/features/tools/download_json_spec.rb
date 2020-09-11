@@ -20,7 +20,7 @@ describe 'Downloading Tool JSON', reset_provider: true, js: true do
         click_on 'Download JSON'
 
         # Seems to need a brief (>0.01) pause to actually find the file.
-        sleep(0.1)
+        sleep(0.5)
       end
 
       after do

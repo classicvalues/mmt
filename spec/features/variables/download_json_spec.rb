@@ -21,7 +21,7 @@ describe 'Downloading Variable JSON', js: true do
         click_on 'Download JSON'
 
         # Seems to need a brief (>0.01) pause to actually find the file.
-        sleep(0.1)
+        sleep(0.5)
       end
 
       after do

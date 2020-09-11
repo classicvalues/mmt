@@ -28,7 +28,7 @@ describe 'Downloading Collection XML', js: true do
           click_on 'ECHO 10'
 
           # Seems to need a brief (>0.01) pause to actually find the file.
-          sleep(0.1)
+          sleep(0.5)
         end
 
         after do
@@ -79,7 +79,7 @@ describe 'Downloading Collection XML', js: true do
           click_on 'ISO 19115 (SMAP) (Native)'
 
           # Seems to need a brief (>0.01) pause to actually find the file.
-          sleep(0.1)
+          sleep(0.5)
         end
 
         after do
