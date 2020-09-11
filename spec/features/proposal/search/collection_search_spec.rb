@@ -69,7 +69,7 @@ describe 'Searching for published collections in proposal mode', js: true do
 
           after do
             # Seems to need a brief (>0.01) pause to actually find the file.
-            sleep(0.1)
+            sleep(5.0)
             FileUtils.rm @file if File.exist?(@file)
           end
 
