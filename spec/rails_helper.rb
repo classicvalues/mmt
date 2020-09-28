@@ -118,6 +118,9 @@ RSpec.configure do |config|
   # only if the test is tagged with reset_provider: true
   config.before(:all) do
     if self.class.metadata[:reset_provider]
+      puts self.inspect
+      Rails.logger.info(self.inspect)
+      Rails.logger.info('In before hook.')
       Rake.application.rake_require 'tasks/local_cmr'
       Rake::Task.define_task(:environment)
       Rake::Task['cmr:reset_test_provider'].reenable
@@ -129,6 +132,9 @@ RSpec.configure do |config|
   end
   config.after(:all) do
     if self.class.metadata[:reset_provider]
+      puts self.inspect
+      Rails.logger.info(self.inspect)
+      Rails.logger.info('In after hook.')
       Rake.application.rake_require 'tasks/local_cmr'
       Rake::Task.define_task(:environment)
       Rake::Task['cmr:reset_test_provider'].reenable
