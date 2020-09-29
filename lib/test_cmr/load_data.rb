@@ -666,6 +666,8 @@ module Cmr
 
     def reset_provider(provider_id)
       ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'load_data.rb reset_provider' do
+        puts 'Running reset_provider'
+        Rails.logger.info('Running reset_provider')
         wait_for_indexing
 
         clear_cache

@@ -122,7 +122,6 @@ RSpec.configure do |config|
       Rails.logger.info(self.inspect)
       Rails.logger.info('In before hook.')
       Rake.application.rake_require 'tasks/local_cmr'
-      Rake::Task.define_task(:environment)
       Rake::Task['cmr:reset_test_provider'].reenable
 
       Rake.application.invoke_task 'cmr:reset_test_provider[MMT_2]'
@@ -136,7 +135,6 @@ RSpec.configure do |config|
       Rails.logger.info(self.inspect)
       Rails.logger.info('In after hook.')
       Rake.application.rake_require 'tasks/local_cmr'
-      Rake::Task.define_task(:environment)
       Rake::Task['cmr:reset_test_provider'].reenable
 
       Rake.application.invoke_task 'cmr:reset_test_provider[MMT_2]'
