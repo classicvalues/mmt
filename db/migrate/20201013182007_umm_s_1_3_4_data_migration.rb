@@ -45,7 +45,7 @@ class UmmS134DataMigration < ActiveRecord::Migration[5.2]
                         (inputs.present? && inputs.is_a?(Array) && outputs.blank?) ||
                         (outputs.present? && outputs.is_a?(Array) && inputs.blank?)
 
-    reformattings = draft.fetch('ServiceOptions').fetch('SupportedReformattings', nil)
+    reformattings = options.fetch('SupportedReformattings', [])
     reformattings = [] unless reformattings.is_a?(Array)
     if inputs.blank?
       reformattings.push('SupportedOutputFormats' => outputs)
@@ -82,7 +82,7 @@ class UmmS134DataMigration < ActiveRecord::Migration[5.2]
     nil
   end
 
-  # Uses CMR's logic for the expansion, which is tailored to specific existing
+  # Uses CMR's logic for the expansion, which is tailored to specific existing data
   # without more guidance, it's hard/impossible to make a general migration here
   # Deletes old SubsetTypes field.
   def expand_subset_type(draft)
