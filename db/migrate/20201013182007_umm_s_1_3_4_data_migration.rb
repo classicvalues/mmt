@@ -35,15 +35,15 @@ class UmmS134DataMigration < ActiveRecord::Migration[5.2]
       return draft
     end
 
-    inputs = options.delete('SupportedInputFormats') || []
-    outputs = options.delete('SupportedOutputFormats') || []
+    inputs = options.delete('SupportedInputFormats')
+    outputs = options.delete('SupportedOutputFormats')
 
     # Need either inputs or outputs, but if both are present, both they need to
     # be arrays if present
     # If they are not arrays, they are bad data and cannot be used.
-    return draft unless (inputs.present? && inputs.is_a?(Array) && outputs.present? && outputs.is_a?(Array)) ||
-                        (inputs.present? && inputs.is_a?(Array) && outputs.blank?) ||
-                        (outputs.present? && outputs.is_a?(Array) && inputs.blank?)
+    return draft unless (inputs.is_a?(Array) && outputs.is_a?(Array)) ||
+                        (inputs.is_a?(Array) && outputs.blank?) ||
+                        (outputs.is_a?(Array) && inputs.blank?)
 
     reformattings = options.fetch('SupportedReformattings', [])
     reformattings = [] unless reformattings.is_a?(Array)
