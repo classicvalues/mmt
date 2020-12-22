@@ -2,7 +2,7 @@
 # when there are selected collections that they do not have access to see. We need
 # to test and make sure that scenario has been prevented
 
-describe 'Updating Collection Permissions when collections are not accessible by the user' do
+describe 'Updating Collection Permissions when collections are not accessible by the user', focus: true do
   # this collection should be visible to all Registered users
   let(:entry_title_visible_to_all) { 'Near-Real-Time SSMIS EASE-Grid Daily Global Ice Concentration and Snow Extent V004' }
   let(:entry_id_visible_to_all) { 'NISE_4' }
@@ -215,7 +215,7 @@ end
 # we need to duplicate the test and completely separate the regular login from
 # login_admin, otherwise if the admin tests run first, somehow the regular login
 # gets admin access
-describe 'Updating Collection Permissions as an admin user when collections are not accessible by regular users' do
+describe 'Updating Collection Permissions as an admin user when collections are not accessible by regular users', focus: true do
   # this collection should be visible to all Registered users
   let(:entry_title_visible_to_all) { 'Near-Real-Time SSMIS EASE-Grid Daily Global Ice Concentration and Snow Extent V004' }
   let(:entry_id_visible_to_all) { 'NISE_4' }
