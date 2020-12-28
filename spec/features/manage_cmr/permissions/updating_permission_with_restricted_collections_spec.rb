@@ -98,6 +98,7 @@ describe 'Updating Collection Permissions when collections are not accessible by
 
         wait_for_jQuery
         puts "checking NSIDC collection permissions for testuser: #{get_catalog_item_acls_for(user: 'testuser', provider: 'NSIDC_ECS')}"
+        puts "checking NSIDC collection permissions for typical: #{get_catalog_item_acls_for(user: 'typical', provider: 'NSIDC_ECS')}"
         puts "checking NSIDC collection permissions: #{get_catalog_item_acls_for(provider: 'NSIDC_ECS')}"
       end
 
@@ -162,6 +163,7 @@ describe 'Updating Collection Permissions when collections are not accessible by
 
         wait_for_jQuery
         puts "checking NSIDC collection permissions for testuser: #{get_catalog_item_acls_for(user: 'testuser', provider: 'NSIDC_ECS')}"
+        puts "checking NSIDC collection permissions for typical: #{get_catalog_item_acls_for(user: 'typical', provider: 'NSIDC_ECS')}"
         puts "checking NSIDC collection permissions: #{get_catalog_item_acls_for(provider: 'NSIDC_ECS')}"
       end
 
