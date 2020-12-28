@@ -1,4 +1,4 @@
-describe 'Using rake tasks to add a user to groups for local group and acl manual testing and development', reset_provider: true do
+describe 'Using rake tasks to add a user to groups for local group and acl manual testing and development', reset_provider: true, focus: true do
   context 'when using acls:groups tasks' do
     context 'when using acls:groups:mmt_2_users' do
       before do
