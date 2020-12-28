@@ -240,5 +240,28 @@ module Helpers
         end
       end
     end
+
+    def get_acls_for_user_and_target(user:, target:)
+      permission_options = {
+        permitted_user: user,
+        target: target,
+        include_full_acl: true,
+        page_size: 2000,
+        page_num: 1
+      }
+      cmr_client.get_permissions(permission_options, 'access_token_admin').body
+    end
+
+    def get_catalog_item_acls_for(user: nil, provider: 'NSIDC_ECS')
+      permission_options = {
+        identity_type: 'catalog_item',
+        provider: provider,
+        include_full_acl: true,
+        page_size: 2000,
+        page_num: 1
+      }
+      permission_options[:permitted_user] = user unless user.blank?
+      cmr_client.get_permissions(permission_options, 'access_token_admin').body
+    end
   end
 end

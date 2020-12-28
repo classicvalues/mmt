@@ -44,6 +44,9 @@ describe 'Groups list page', js: true, reset_provider: true do
 
                 click_on 'Apply Filters'
               end
+
+              puts "checking group permissions for testuser: #{get_acls_for_user_and_target(user: 'testuser', target: 'GROUP')}"
+              puts "checking group permissions for typical: #{get_acls_for_user_and_target(user: 'typical', target: 'GROUP')}"
             end
 
             it 'displays groups from all Available Providers' do
@@ -151,6 +154,9 @@ describe 'Groups list page', js: true, reset_provider: true do
 
             click_on 'Apply Filters'
           end
+
+          puts "checking group permissions for testuser: #{get_acls_for_user_and_target(user: 'testuser', target: 'GROUP')}"
+          puts "checking group permissions for typical: #{get_acls_for_user_and_target(user: 'typical', target: 'GROUP')}"
         end
 
         it 'displays groups from Available Providers' do

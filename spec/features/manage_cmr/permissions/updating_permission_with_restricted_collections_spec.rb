@@ -97,6 +97,8 @@ describe 'Updating Collection Permissions when collections are not accessible by
         visit edit_permission_path(@collection_permission_all_restricted['concept_id'])
 
         wait_for_jQuery
+        puts "checking NSIDC collection permissions for testuser: #{get_catalog_item_acls_for(user: 'testuser', provider: 'NSIDC_ECS')}"
+        puts "checking NSIDC collection permissions: #{get_catalog_item_acls_for(provider: 'NSIDC_ECS')}"
       end
 
       it 'displays the collection permission edit form with 0 of 2 selected collections' do
@@ -159,6 +161,8 @@ describe 'Updating Collection Permissions when collections are not accessible by
         visit edit_permission_path(@collection_permission_some_restricted['concept_id'])
 
         wait_for_jQuery
+        puts "checking NSIDC collection permissions for testuser: #{get_catalog_item_acls_for(user: 'testuser', provider: 'NSIDC_ECS')}"
+        puts "checking NSIDC collection permissions: #{get_catalog_item_acls_for(provider: 'NSIDC_ECS')}"
       end
 
       it 'displays the collection permission with 1 of 3 selected collection' do

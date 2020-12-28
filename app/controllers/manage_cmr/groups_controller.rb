@@ -50,7 +50,8 @@ class GroupsController < ManageCmrController
     @query[:page_size] = RESULTS_PER_PAGE
     page = params.permit(:page).fetch('page', 1)
     @query[:page_num] = page.to_i
-
+    puts "querying groups for: #{@query}"
+    puts "with token: #{token}"
     groups_response = cmr_client.get_cmr_groups(@query, token)
 
     group_list = if groups_response.success?
