@@ -46,7 +46,7 @@
   <p class="radio-group"><%= radio_button_tag(name_to_param("#{name_prefix}|ends_at_present_flag|"), 'false', ends_at_present_flag.to_s == 'false', data: { level: remove_pipes(name_prefix) }) %><label for="<%= remove_pipes(name_prefix) %>ends_at_present_flag_false">False</label></p>
 
   <!-- RangeDateTimes -->
-  <div class="temporal-range-type range-date-time" style="<%= 'display: none;' unless range_checked %>">
+  <div class="temporal-range-type range-date-time<%= ' is-hidden' unless range_checked %>">
     <%= mmt_label(
       name: 'range_date_times',
       title: 'Range Date Times',
@@ -65,7 +65,7 @@
         options: options.clone } %>
   </div>
 
-  <div class="temporal-range-type single-date-time" style="<%= 'display: none;' unless single_checked %>">
+  <div class="temporal-range-type single-date-time<%= ' is-hidden' unless single_checked %>">
     <% date_times = temporal_extent['SingleDateTimes'] || [nil] # [nil] creates at least one date_time field %>
     <div class="multiple simple-multiple single-date-times">
       <%= mmt_label(
@@ -94,7 +94,7 @@
   </div>
 
   <!-- PeriodicDateTimes -->
-  <div class="temporal-range-type periodic-date-time" style="<%= 'display: none;' unless periodic_checked %>">
+  <div class="temporal-range-type periodic-date-time<%= ' is-hidden' unless periodic_checked %>">
     <%= mmt_label(
       name: 'periodic_date_times',
       title: 'Periodic Date Time',

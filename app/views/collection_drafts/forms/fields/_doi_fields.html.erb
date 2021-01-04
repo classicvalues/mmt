@@ -11,7 +11,7 @@
     <label for="<%= remove_pipes(name_prefix) %>NotAvailable">DOI Not Available</label>
   </p>
 
-  <div class="doi-fields available" style="<%= 'display: none;' unless doi_available == true %>">
+  <div class="doi-fields available<%= ' is-hidden' unless doi_available == true %>">
     <!-- DOI -->
     <%= mmt_text_area(
       name: 'doi',
@@ -34,7 +34,7 @@
     ) %>
   </div>
 
-  <div class="doi-fields not-available" style="<%= 'display: none;' unless doi_available == false %>">
+  <div class="doi-fields not-available<%= ' is-hidden' unless doi_available == false %>">
     <!-- MissingReason ("Not Applicable" is only choice) -->
     <%= mmt_select(
       name: 'missing_reason',

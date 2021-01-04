@@ -64,7 +64,7 @@
     required_level: options[:required_level]
   ) %>
 
-  <div class="get-data-fields" style="<%= 'display: none;' unless related_url['Type'] == 'GET DATA' %>">
+  <div class="get-data-fields<%= ' is-hidden' unless related_url['Type'] == 'GET DATA' %>">
     <%= mmt_label(
       name: 'get_data',
       title: 'Get Data',
@@ -83,7 +83,7 @@
       } %>
   </div>
 
-  <div class="get-service-fields" style="<%= 'display: none;' unless related_url['Type'] == 'GET SERVICE' %>">
+  <div class="get-service-fields<%= ' is-hidden' unless related_url['Type'] == 'GET SERVICE' %>">
     <%= mmt_label(
       name: 'get_service',
       title: 'Get Service',

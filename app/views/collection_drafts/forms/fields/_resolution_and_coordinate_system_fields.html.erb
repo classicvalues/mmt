@@ -42,7 +42,7 @@
   </div>
 
 
-  <div class="horizontal-data-resolution-fields" style="<%= 'display: none;' unless resolution_checked %>">
+  <div class="horizontal-data-resolution-fields<%= ' is-hidden' unless resolution_checked %>">
     <!-- HorizontalDataResolution -->
     <%= mmt_label(
       name: 'horizontal_data_resolution',
@@ -61,7 +61,7 @@
         options: {} } %>
   </div>
 
-  <div class="local-coordinate-system-fields" style="<%= 'display: none;' unless local_checked %>">
+  <div class="local-coordinate-system-fields<%= ' is-hidden' unless local_checked %>">
     <!-- LocalCoordinateSystem -->
     <%= mmt_label(
       name: 'local_coordinate_system',
