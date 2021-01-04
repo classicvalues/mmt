@@ -80,7 +80,7 @@
       <label for="<%= remove_pipes(name_prefix) %>ByDate">Calculate Total Collection File Size By Start Date</label>
     </p>
 
-    <div class="row total-collection-file-size-fields by-size" style="<%= 'display: none;' unless by_size == true %>">
+    <div class="row total-collection-file-size-fields by-size<%= ' is-hidden' unless by_size == true %>">
       <div class="col-6">
         <!-- Total Collection File Size -->
         <%= mmt_text_field(
@@ -107,7 +107,7 @@
       </div>
     </div>
     <!-- Total Collection File Size Begin Date -->
-    <div class="row total-collection-file-size-fields by-date" style="<%= 'display: none;' unless by_size == false %>">
+    <div class="row total-collection-file-size-fields by-date<%= ' is-hidden' unless by_size == false %>">
       <div class="col-12">
         <%= mmt_datetime(
               name: 'total_collection_file_size_begin_date',

@@ -14,7 +14,7 @@
   </div>
 
   <!-- Data Center Contact Person -->
-  <div class="data-contact-type data-center-contact-person" data-required-level="1" style="<%= 'display: none;' unless data_contact_type == 'DataCenterContactPerson' %>">
+  <div class="data-contact-type data-center-contact-person<%= ' is-hidden' unless data_contact_type == 'DataCenterContactPerson' %>" data-required-level="1" >
     <%= mmt_label(
     name: 'data_center_contact_person',
     title: 'Data Center Contact Person',
@@ -43,7 +43,7 @@
 
 
   <!-- Data Center Contact Group -->
-  <div class="data-contact-type data-center-contact-group" data-required-level="1" style="<%= 'display: none;' unless data_contact_type == 'DataCenterContactGroup' %>">
+  <div class="data-contact-type data-center-contact-group<%= ' is-hidden' unless data_contact_type == 'DataCenterContactGroup' %>" data-required-level="1" >
     <%= mmt_label(
     name: 'data_center_contact_group',
     title: 'Data Center Contact Group',
@@ -72,7 +72,7 @@
   </div>
 
   <!-- Non Data Center Contact Person -->
-  <div class="data-contact-type non-data-center-contact-person" data-required-level="1" style="<%= 'display: none;' unless data_contact_type == 'NonDataCenterContactPerson' %>">
+  <div class="data-contact-type non-data-center-contact-person<%= ' is-hidden' unless data_contact_type == 'NonDataCenterContactPerson' %>" data-required-level="1" >
     <%= mmt_label(
     name: 'non_data_center_contact_person',
     title: 'Non Data Center Contact Person',
@@ -99,7 +99,7 @@
   </div>
 
   <!-- Non Data Center Contact Group -->
-  <div class="data-contact-type non-data-center-contact-group" data-required-level="1" style="<%= 'display: none;' unless data_contact_type == 'NonDataCenterContactGroup' %>">
+  <div class="data-contact-type non-data-center-contact-group<%= ' is-hidden' unless data_contact_type == 'NonDataCenterContactGroup' %>" data-required-level="1">
     <%= mmt_label(
     name: 'non_data_center_contact_group',
     title: 'Non Data Center Contact Group',

@@ -1,5 +1,5 @@
 <div>
-  <div class="provider-context-many-providers" style="<%= 'display: none;' unless current_user.available_providers.size > 1 %>">
+  <div class="provider-context-many-providers<%= ' is-hidden' unless current_user.available_providers.size > 1 %>">
     <p>
       Please select your provider context. You can change your context at any point.
     </p>
@@ -11,13 +11,13 @@
     </p>
   </div>
 
-  <div class="provider-context-one-provider" style="<%= 'display: none;' unless current_user.available_providers.size == 1 %>">
+  <div class="provider-context-one-provider<%= ' is-hidden' unless current_user.available_providers.size == 1 %>">
     <p>
       You only have one available provider, <%= current_user.provider_id %>
     </p>
   </div>
 
-  <div class="provider-context-no-providers" style="<%= 'display: none;' unless current_user.available_providers.empty? %>">
+  <div class="provider-context-no-providers<%= ' is-hidden' unless current_user.available_providers.empty? %>">
     <p>
       You currently have no available providers. Please contact your provider administrator or the CMR OPS team to set up provider access.
     </p>
