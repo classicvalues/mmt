@@ -11,6 +11,7 @@ module Helpers
     # Also try again if there are no accordions on the page (page hasn't loaded yet)
     # http://stackoverflow.com/a/28174679
     def open_accordions
+      page.evaluate_script('jQuery.active')
       ActiveSupport::Notifications.instrument 'mmt.performance', activity: 'Helpers::DraftHelpers#open_accordions' do
         Timeout.timeout(Capybara.default_max_wait_time) do
           loop do
