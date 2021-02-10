@@ -50,6 +50,7 @@ Rails.application.routes.draw do
 
   resources :subscriptions
   post 'estimate_notifications' => 'subscriptions#estimate_notifications'
+  post 'subscriber_has_permissions' => 'subscriptions#subscriber_has_permissions'
 
   post '/bulk_updates/check_task_name' => 'bulk_updates#check_task_name'
   resources :bulk_updates, only: [:index, :show, :create] do

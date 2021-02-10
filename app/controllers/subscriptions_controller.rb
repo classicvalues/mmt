@@ -6,7 +6,7 @@ class SubscriptionsController < ManageCmrController
   before_action :add_top_level_breadcrumbs
   before_action :fetch_subscription, only: %i[show edit update destroy]
 
-  skip_before_action :proposal_approver_permissions, only: [:estimate_notifications]
+  skip_before_action :proposal_approver_permissions, only: [:estimate_notifications, :subscriber_has_permissions]
 
   DAY_IN_SECONDS = 86_400
   RESULTS_PER_PAGE = 25
@@ -108,6 +108,19 @@ class SubscriptionsController < ManageCmrController
     end
   end
 
+  def subscriber_has_permissions
+    subscription = subscription_params
+    collection_permission_response = cmr_client.check_user_permissions({ concept_id: subscription['CollectionConceptId'], user_id: subscription['SubscriberId'] }, token)
+
+    if !collection_permission_response.success?
+      render plain: "An error occurred while checking the user's permissions: #{collection_permission_response.error_message}", status: :internal_server_error
+    elsif !JSON.parse(collection_permission_response.body)[subscription['CollectionConceptId']].include?('read')
+      render plain: "Subscriber lacks the permissions to view Collection #{subscription['CollectionConceptId']}", status: :unauthorized
+    else
+      render plain: 'Subscriber has the permissions to view the collection'
+    end
+  end
+
   def estimate_notifications
     authorize :subscription
 
@@ -115,6 +128,7 @@ class SubscriptionsController < ManageCmrController
     render plain: 'This query cannot be tested because it is missing a parameter, please make sure all of the fields are filled in.', status: :bad_request and return if subscription['SubscriberId'].blank? || subscription['CollectionConceptId'].blank? || subscription['Query'].blank?
 
     collection_permission_response = cmr_client.check_user_permissions({ concept_id: subscription['CollectionConceptId'], user_id: subscription['SubscriberId'] }, token)
+
     if collection_permission_response.success? && JSON.parse(collection_permission_response.body)[subscription['CollectionConceptId']].include?('read')
       granule_search_response = cmr_client.test_query(prepare_query_for_test(subscription['CollectionConceptId'], subscription['Query']), token)
 

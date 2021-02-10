@@ -60,6 +60,7 @@ $(document).ready ->
           isValidQuery: true
         'subscription[SubscriberId]':
           required: true
+          hasPermissions: true
       messages:
         'subscription[Name]':
           required: 'Subscription Name is required.'
@@ -70,6 +71,7 @@ $(document).ready ->
           isValidQuery: 'Query must be a valid CMR granule search query.'
         'subscription[SubscriberId]':
           required: 'Subscriber is required.'
+          hasPermissions: 'WARNING: subscriber does not have access to the specified collection'
 
       errorPlacement: (error, element) ->
         if element.attr('id') == 'subscriber'
@@ -101,8 +103,24 @@ $(document).ready ->
 
       true
 
-  $('#subscriber').on 'change', ->
-    if $('#subscriber-error').length > 0
+    $.validator.addMethod 'hasPermissions', () ->
+      console.log('sending ajax..')
+      res = $.ajax '/subscriber_has_permissions',
+              method: 'POST'
+              async: false
+              data:
+                subscription:
+                  CollectionConceptId: $('#subscription_CollectionConceptId').val()
+                  SubscriberId: $('#subscriber').val()
+
+      return res.status == 200
+
+  $('#subscriber, #subscription_CollectionConceptId').on 'change', ->
+    conceptId = $('#subscription_CollectionConceptId').val()
+    subscriberId = $('#subscriber').val()
+
+    if conceptId.length > 0 && subscriberId.length > 0
+      # trigger validation with .valid()
       $('#subscriber').valid()
 
   $('.estimate-notifications').on 'click', ->
