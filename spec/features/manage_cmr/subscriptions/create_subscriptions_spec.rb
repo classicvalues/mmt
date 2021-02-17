@@ -4,7 +4,7 @@ describe 'Creating Subscriptions', reset_provider: true do
   end
 
   context 'when subscriptions is turned on' do
-    before do
+    before :all do
       @subscriptions_group = create_group(members: ['testuser', 'typical'])
       # the ACL is currently configured to work like Ingest, U covers CUD (of CRUD)
       @subscriptions_permissions = add_permissions_to_group(@subscriptions_group['concept_id'], ['update', 'read'], 'SUBSCRIPTION_MANAGEMENT', 'MMT_2')
@@ -13,7 +13,7 @@ describe 'Creating Subscriptions', reset_provider: true do
       clear_cache
     end
 
-    after do
+    after :all do
       remove_group_permissions(@subscriptions_permissions['concept_id'])
       delete_group(concept_id: @subscriptions_group['concept_id'])
 
@@ -61,53 +61,33 @@ describe 'Creating Subscriptions', reset_provider: true do
         end
 
         context 'when submitting a subscription that fails' do
-          context 'when violating uniqueness constraints in the CMR' do
-            # Generating a genuine failure by violating uniqueness constraints
-            # in the CMR.
-            let(:name2) { 'Exciting Subscription with Important Data4' }
-            before do
-              @native_id_failure = 'test_native_id'
-              @ingest_response, _search_response, _subscription = publish_new_subscription(name: name2, query: query, collection_concept_id: collection_concept_id, native_id: @native_id_failure)
+          # Generating a genuine failure by violating uniqueness constraints
+          # in the CMR.
+          let(:name2) { 'Exciting Subscription with Important Data4' }
+          before do
+            @native_id_failure = 'test_native_id'
+            @ingest_response, _search_response, _subscription = publish_new_subscription(name: name2, query: query, collection_concept_id: collection_concept_id, native_id: @native_id_failure)
 
-              fill_in 'Subscription Name', with: name2
-              VCR.use_cassette('urs/rarxd5taqea', record: :none) do
-                within '.subscription-form' do
-                  click_on 'Submit'
-                end
-              end
-            end
-
-            it 'fails to create the subscription' do
-              expect(page).to have_content('The Provider Id [MMT_2] and Subscription Name [Exciting Subscription with Important Data4] combination must be unique for a given native-id')
-            end
-
-            it 'repopulates the form with the entered values' do
-              expect(page).to have_field('Subscription Name', with: name2)
-              expect(page).to have_field('Query', with: query)
-
-              within '.select2-container' do
-                expect(page).to have_css('.select2-selection__rendered', text: 'Rvrhzxhtra Vetxvbpmxf')
+            fill_in 'Subscription Name', with: name2
+            VCR.use_cassette('urs/rarxd5taqea', record: :none) do
+              within '.subscription-form' do
+                click_on 'Submit'
               end
             end
           end
 
-          context 'when proposed subscriber lacks permissions' do
-            before do
-              fill_in 'Subscription Name', with: name
-              fill_in 'Collection Concept ID', with: 'C1234567-PODAAC'
-              # within '.subscription-form' do
-              #   click_on 'Submit'
-              # end
-              wait_for_jQuery
-            end
-
-            it 'displays validation error' do
-              # puts page.driver.browser.manage.logs.get(:browser)
-              expect(page).to have_content('User lacks permissions to view the specified Concept ID.')
-              # expect(page).to have_content('TESTESTESTEST')
-            end
+          it 'fails to create the subscription' do
+            expect(page).to have_content('The Provider Id [MMT_2] and Subscription Name [Exciting Subscription with Important Data4] combination must be unique for a given native-id')
           end
 
+          it 'repopulates the form with the entered values' do
+            expect(page).to have_field('Subscription Name', with: name2)
+            expect(page).to have_field('Query', with: query)
+
+            within '.select2-container' do
+              expect(page).to have_css('.select2-selection__rendered', text: 'Rvrhzxhtra Vetxvbpmxf')
+            end
+          end
         end
       end
     end
@@ -134,7 +114,7 @@ describe 'Creating Subscriptions', reset_provider: true do
       end
 
       it 'displays the Manage Cmr page' do
-        # Need to use the next line instead of the following line if js: true for these tests
+        # Need to use the next line instead of the following line if js: true is on for these tests
         # expect(page).to have_css('h2.current', text: 'MANAGE CMR')
         expect(page).to have_css('h2.current', text: 'Manage CMR')
 

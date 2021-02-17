@@ -109,42 +109,12 @@ class SubscriptionsController < ManageCmrController
   end
 
   def subscriber_has_permissions
-
     subscription = subscription_params
-    puts subscription, 'aefiw'
 
     collection_permission_response = cmr_client.check_user_permissions({ concept_id: subscription['CollectionConceptId'], user_id: subscription['SubscriberId'] }, token)
 
-    if !collection_permission_response.success?
-      render json: false.to_json, status: :ok
-    elsif !JSON.parse(collection_permission_response.body)[subscription['CollectionConceptId']].include?('read')
-      render json: false.to_json, status: :ok
-    else
-      render json: true.to_json, status: :ok
-    end
+    render json: collection_permission_response.success? && JSON.parse(collection_permission_response.body)[subscription['CollectionConceptId']].include?('read')
   end
-
-  # def subscriber_has_permissions
-  #   phrase = 'endpoint reached ! wie48rj4r'#, subscription['CollectionConceptId'], subscription['SubscriberId']#, !collection_permission_response.success?, !JSON.parse(collection_permission_response.body)[subscription['CollectionConceptId']].include?('read')
-  #
-  #   subscription = subscription_params
-  #   collection_permission_response = cmr_client.check_user_permissions({ concept_id: subscription['CollectionConceptId'], user_id: subscription['SubscriberId'] }, token)
-  #
-  #   puts phrase, 'precondition', collection_permission_response.success?, collection_permission_response.body, subscription
-  #   if !collection_permission_response.success?
-  #     puts phrase, 'first condition', collection_permission_response.success?
-  #     # render plain: "An error occurred while checking the user's permissions: #{collection_permission_response.error_message}", status: :internal_server_error
-  #     render json: false.to_json, status: :internal_server_error
-  #   elsif !JSON.parse(collection_permission_response.body)[subscription['CollectionConceptId']].include?('read')
-  #     puts phrase, 'second condition'
-  #     # render plain: "Subscriber lacks the permissions to view Collection #{subscription['CollectionConceptId']}", status: :unauthorized
-  #     render json: false.to_json, status: :unauthorized
-  #   else
-  #     puts phrase, 'third condition'
-  #     # render plain: 'Subscriber has the permissions to view the collection', status: :ok
-  #     render json: true.to_json, status: :ok
-  #   end
-  # end
 
   def estimate_notifications
     authorize :subscription

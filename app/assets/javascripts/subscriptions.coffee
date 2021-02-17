@@ -60,14 +60,13 @@ $(document).ready ->
           isValidQuery: true
         'subscription[SubscriberId]':
           required: true
-          onkeyup: false
-          remote:
-            url: '/subscriber_has_permissions'
-            type: 'post'
-            data:
-              subscription:
-                CollectionConceptId: -> $('#subscription_CollectionConceptId').val()
-                SubscriberId: -> $('#subscriber').val()
+          # remote:
+          #   url: '/subscriber_has_permissions'
+          #   type: 'post'
+          #   data:
+          #     subscription:
+          #       CollectionConceptId: -> $('#subscription_CollectionConceptId').val()
+          #       SubscriberId: -> $('#subscriber').val()
       messages:
         'subscription[Name]':
           required: 'Subscription Name is required.'
@@ -78,7 +77,7 @@ $(document).ready ->
           isValidQuery: 'Query must be a valid CMR granule search query.'
         'subscription[SubscriberId]':
           required: 'Subscriber is required.'
-          remote: 'User lacks permissions to view the specified Concept ID.'
+          # remote: 'User lacks permissions to view the specified Concept ID.'
 
       errorPlacement: (error, element) ->
         if element.attr('id') == 'subscriber'
@@ -110,28 +109,16 @@ $(document).ready ->
 
       true
 
-    # $.validator.addMethod 'hasPermissions', () ->
-    #   res = $.ajax '/subscriber_has_permissions',
-    #           method: 'POST'
-    #           async: false
-    #           data:
-    #             subscription:
-    #               CollectionConceptId: $('#subscription_CollectionConceptId').val()
-    #               SubscriberId: $('#subscriber').val()
-    #
-    #   # console.log(res)
-    #   return res.status == 200
-
   # select2 element wont validate live unless we trigger validation with .valid() on change
-  $('#subscription_CollectionConceptId').on 'change', ->
-    conceptId = $('#subscription_CollectionConceptId').val()
-    subscriberId = $('#subscriber').val()
-    $('#subscriber').valid() if conceptId.length > 0 && subscriberId.length > 0
-
-  $('#subscriber').select2().on 'select2:select', ->
-    conceptId = $('#subscription_CollectionConceptId').val()
-    subscriberId = $('#subscriber').val()
-    $('#subscriber').valid() if conceptId.length > 0 && subscriberId.length > 0
+  # $('#subscription_CollectionConceptId').on 'change', ->
+  #   conceptId = $('#subscription_CollectionConceptId').val()
+  #   subscriberId = $('#subscriber').val()
+  #   $('#subscriber').valid() if conceptId.length > 0 && subscriberId.length > 0
+  #
+  # $('#subscriber').select2().on 'select2:select', ->
+  #   conceptId = $('#subscription_CollectionConceptId').val()
+  #   subscriberId = $('#subscriber').val()
+  #   $('#subscriber').valid() if conceptId.length > 0 && subscriberId.length > 0
 
 
   $('.estimate-notifications').on 'click', ->
