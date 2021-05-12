@@ -1,4 +1,4 @@
-describe 'Data identification preview' do
+describe 'Data identification preview', focus: true do
   context 'when viewing the preview page' do
     context 'when there is no metadata' do
       before do

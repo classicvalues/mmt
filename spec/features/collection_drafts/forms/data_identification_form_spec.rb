@@ -1,4 +1,4 @@
-describe 'Data identification form', js: true do
+describe 'Data identification form', js: true, focus: true do
   before do
     login
     draft = create(:collection_draft, user: User.where(urs_uid: 'testuser').first)
