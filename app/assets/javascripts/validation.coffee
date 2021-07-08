@@ -798,7 +798,6 @@ $(document).ready ->
     dateTimeRegex = new RegExp $('#datetime-regex-for-validation').val()
     boolRegex = new RegExp $('boolean-regex-for-validation').val()
 
-
     $('#draft_additional_attributes').children('.multiple-item').each (index, element) ->
       dataType = $("#draft_additional_attributes_#{index}_data_type").val()
       value = $("#draft_additional_attributes_#{index}_value").val().trim()
