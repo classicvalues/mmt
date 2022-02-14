@@ -80,7 +80,7 @@ module Proposal
     # Expects to be passed an 'Echo-Token' of format 'URS token:URS client id'
     # in the headers.
     def validate_token_and_user
-      puts 'can I even be here?'
+      # puts 'can I even be here?'
       puts "headers: #{request.headers.inspect}"
       # passed_token, passed_client_id = request.headers.fetch('Echo-Token', ':').split(':')
       passed_token = request.headers.fetch('Echo-Token', nil)
@@ -88,10 +88,10 @@ module Proposal
       # Navigate a browser elsewhere if there is no token
       redirect_to root_path and return if passed_token.blank?
 
-      puts 'in validate_token_and_user, about to try and validate token'
-      puts 'lp token:'
-      p passed_token
-      log_all_session_keys
+      # puts 'in validate_token_and_user, about to try and validate token'
+      # puts 'lp token:'
+      # p passed_token
+      # log_all_session_keys
 
       # @token_response = cmr_client.validate_token(passed_token, passed_client_id)
       @token_response = cmr_client.validate_launchpad_token(passed_token)
