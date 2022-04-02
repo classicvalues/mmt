@@ -53,6 +53,14 @@
     </div>
 
     <div class="col-3">
+      <%= label_tag 'subregion_4', 'Subregion 4' %>
+      <%= text_field_tag('find_value[Subregion4]',
+                         repopulate_find_value(@task, 'location_keywords', 'Subregion4'),
+                         id: 'subregion_4',
+                         class: 'full-width location-keyword-find') %>
+    </div>
+
+    <div class="col-3">
       <%= label_tag 'detailed_location', 'Detailed Location' %>
       <%= text_field_tag('find_value[DetailedLocation]',
                          repopulate_find_value(@task, 'location_keywords', 'DetailedLocation'),
@@ -135,6 +143,15 @@
         <%= text_field_tag('update_value[Subregion3]',
                            repopulate_update_value(@task, 'location_keywords', 'Subregion3'),
                            id: 'new_subregion_3',
+                           class: 'full-width location-keyword-value',
+                           readonly: true) %>
+      </div>
+
+      <div class="col-3">
+        <%= label_tag 'variablelevel4', 'Subregion 4' %>
+        <%= text_field_tag('update_value[Subregion4]',
+                           repopulate_update_value(@task, 'location_keywords', 'Subregion4'),
+                           id: 'new_subregion_4',
                            class: 'full-width location-keyword-value',
                            readonly: true) %>
       </div>

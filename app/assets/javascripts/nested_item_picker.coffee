@@ -91,7 +91,7 @@ $(document).ready ->
       scienceKeywordFields = ['category', 'topic', 'term', 'variable_level_1', 'variable_level_2', 'variable_level_3', 'detailed_variable']
       serviceKeywordFields = ['service_category', 'service_topic', 'service_term', 'service_specific_term']
       toolKeywordFields = ['tool_category', 'tool_topic', 'tool_term', 'tool_specific_term']
-      locationKeywordFields = ['category', 'type', 'subregion_1', 'subregion_2', 'subregion_3', 'detailed_location']
+      locationKeywordFields = ['category', 'type', 'subregion_1', 'subregion_2', 'subregion_3', 'subregion_4', 'detailed_location']
 
       keywordFields = switch picker.options.data_type
         when 'science' then scienceKeywordFields

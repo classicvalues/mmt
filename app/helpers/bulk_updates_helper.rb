@@ -199,6 +199,7 @@ module BulkUpdatesHelper
     Subregion1
     Subregion2
     Subregion3
+    Subregion4
     DetailedLocation
   ].freeze
 

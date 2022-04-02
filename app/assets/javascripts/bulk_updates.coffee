@@ -40,7 +40,7 @@ $(document).ready ->
 
         if splitKeywords.length >= picker.options.keywordLengthMinimum
           scienceKeywordFields = ['category', 'topic', 'term', 'variablelevel1', 'variablelevel2', 'variablelevel3', 'detailedvariable']
-          locationKeywordFields = ['location_category', 'type', 'subregion_1', 'subregion_2', 'subregion_3', 'detailed_location']
+          locationKeywordFields = ['location_category', 'type', 'subregion_1', 'subregion_2', 'subregion_3', 'subregion_4', 'detailed_location']
 
           fieldsToPopulate = if type == 'science' then scienceKeywordFields else locationKeywordFields
 
@@ -254,6 +254,10 @@ $(document).ready ->
           required:
             depends: ->
               isFindVisibleAndVisited() && areOtherFindValuesEmpty(this)
+        'find_value[Subregion4]':
+          required:
+            depends: ->
+              isFindVisibleAndVisited() && areOtherFindValuesEmpty(this)
         'find_value[DetailedLocation]':
           required:
             depends: ->
@@ -313,6 +317,8 @@ $(document).ready ->
           required: 'At least one keyword level must be specified.'
         'find_value[Subregion3]':
           required: 'At least one keyword level must be specified.'
+        'find_value[Subregion4]':
+          required: 'At least one keyword level must be specified.'
         'find_value[DetailedLocation]':
           required: 'At least one keyword level must be specified.'
         # only the top 3 levels are required for a valid science keyword
@@ -331,7 +337,7 @@ $(document).ready ->
       groups:
         # Show only one message for each group
         science_keyword_find: 'find_value[Category] find_value[Topic] find_value[Term] find_value[VariableLevel1] find_value[VariableLevel2] find_value[VariableLevel3] find_value[DetailedVariable]'
-        location_keyword_find: 'find_value[LocationCategory] find_value[Type] find_value[Subregion1] find_value[Subregion2] find_value[Subregion3] find_value[DetailedLocation]'
+        location_keyword_find: 'find_value[LocationCategory] find_value[Type] find_value[Subregion1] find_value[Subregion2] find_value[Subregion3] find_value[Subregion4] find_value[DetailedLocation]'
         science_keyword_value: 'update_value[Category] update_value[Topic] update_value[Term]'
         location_keyword_value:'update_value[LocationCategory] update_value[Type]'
 
