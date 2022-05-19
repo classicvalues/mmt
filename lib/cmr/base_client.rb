@@ -56,7 +56,7 @@ module Cmr
 
         if is_urs_token?(token)
           # passing the URS token to CMR requires the client id
-          { 'Echo-Token' => "#{token}:#{@client_id}" }
+          { 'Echo-Token' => "Bearer #{token}:#{@client_id}" }
         else
           { 'Echo-Token' => token }
         end
